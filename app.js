@@ -30,10 +30,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  
   Post.find().then((posts) => {
-    if(posts){
-      res.render("home", { startingContent: homeStartingContent, posts: posts });
+    if (posts) {
+      res.render("home", {
+        startingContent: homeStartingContent,
+        posts: posts,
+      });
     }
   });
 });
@@ -71,6 +73,6 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
+app.listen(process.env.PORT || 3000, function () {
+  console.log("Server is running successfully");
 });
