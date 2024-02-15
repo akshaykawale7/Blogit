@@ -3,9 +3,10 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+require('dotenv').config()
 mongoose.set("strictQuery", true);
 mongoose.connect(
-  "mongodb+srv://akkiex700:akshay77@cluster0.gke12ad.mongodb.net/blogdb"
+ process.env.DATABASE_URL
 );
 
 const postSchema = new mongoose.Schema({
